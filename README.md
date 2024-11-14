@@ -44,7 +44,7 @@ QObject::~QObject: Timers cannot be stopped from another thread
 5) Anothere idead is to use QScopedPointer: `QScopedPointer<QTimer> tim` instead of `QTimer *tim`, but problem is the same.  
 
 ## How to fix
-Instead of `QScopedPointer<Worker> worker` use raw pointer `Worker *worker`.
+Instead of `QScopedPointer<Worker> worker` use raw pointer `Worker *worker`, see [raw_pointer](https://github.com/AndreiCherniaev/QThread-with-moveToThread_QTimer/tree/raw_pointer) branch.
 
 ## See also
 <p align="center">

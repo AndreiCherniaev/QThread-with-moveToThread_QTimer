@@ -13,10 +13,10 @@ MainClass::MainClass(QObject *parent) :
 
     worker->moveToThread(thread.get()); //pass the worker object (must not have a parent!) to the thread
     //Worker's run() method starts by thread's signal started()
-    connect(thread.get(), &QThread::started, worker.get(), &Worker::run);
+    connect(thread.get(), &QThread::started, worker, &Worker::run);
     //When worker emit signal "finished" then thread quit
-    connect(worker.get(), &Worker::finished, thread.get(), &QThread::quit);
-    //connect(worker, &Worker::finished, worker, &Worker::deleteLater); //no need because of QScopedPointer
+    connect(worker, &Worker::finished, thread.get(), &QThread::quit);
+    connect(worker, &Worker::finished, worker, &Worker::deleteLater);
     //connect(thread, &QThread::finished, thread, &QThread::deleteLater); //no need because of QScopedPointer
 
     //The main thread analyzes what is happening with the others in threadIsFinished()
@@ -27,7 +27,7 @@ MainClass::MainClass(QObject *parent) :
 
     qDebug() << "parents" << worker->parent() << thread->parent();
 
-    connect(this, &MainClass::GetTimeAsk, worker.get(), &Worker::GetTime, Qt::QueuedConnection);
+    connect(this, &MainClass::GetTimeAsk, worker, &Worker::GetTime, Qt::QueuedConnection);
     QTimer *askTim(new QTimer(this));
     connect(askTim, &QTimer::timeout, this, [&]{
         qDebug().noquote().nospace() << "thread;askTim;" << QThread::currentThreadId();

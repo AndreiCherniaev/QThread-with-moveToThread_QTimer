@@ -28,7 +28,7 @@ public slots:
     void threadIsFinished();
 
 private:
-    QScopedPointer<Worker> worker;  //object, in the methods of which we can write custom algorithms, accessing all the richness of Qt as needed
+    Worker *worker;  //object, in the methods of which we can write custom algorithms, accessing all the richness of Qt as needed
     QScopedPointer<QThread> thread;
 
 signals:
