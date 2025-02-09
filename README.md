@@ -53,5 +53,5 @@ Instead of `QScopedPointer<Worker> worker` use raw pointer `Worker *worker`, see
     <em>Qt hierarchy</em>
 </p>
 
-Read official [doc](https://doc.qt.io/qt-6/threads-qobject.html). See [article](https://www.toptal.com/qt/qt-multithreading-c-plus-plus).
+Read official [doc](https://doc.qt.io/qt-6/threads-qobject.html) and check official [example](https://doc.qt.io/qt-6/qthread.html). See [article](https://www.toptal.com/qt/qt-multithreading-c-plus-plus).
 About SigInt (Ctrl+C) quit see [example](https://github.com/AndreiCherniaev/QCoreApplication_quit_example).
