@@ -16,7 +16,7 @@ MainClass::MainClass(QObject *parent) :
     connect(thread.get(), &QThread::started, worker, &Worker::run);
     //When worker emit signal "finished" then thread quit
     connect(worker, &Worker::finished, thread.get(), &QThread::quit);
-    connect(worker, &Worker::finished, worker, &Worker::deleteLater);
+    connect(thread.get(), &QThread::finished, worker, &Worker::deleteLater);
     //connect(thread, &QThread::finished, thread, &QThread::deleteLater); //no need because of QScopedPointer
 
     //The main thread analyzes what is happening with the others in threadIsFinished()
